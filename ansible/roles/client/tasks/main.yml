@@ -1,0 +1,7 @@
+- name: "copy over client script"
+  copy:
+    src: ../../../../client.py
+    dest: /opt/firemark/client.py
+
+- include: connect.yml
+  with_items: "{{ ports }}"

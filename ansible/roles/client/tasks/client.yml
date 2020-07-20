@@ -1,0 +1,5 @@
+- name: "Checking port {{ port }} open on {{ serverip }}"
+  shell: "python /opt/firemark/client.py {{ serverip }} {{ port }} portopen"
+  register: portOpen
+  failed_when: portOpen.stdout != 'received "portopen"' 
+  

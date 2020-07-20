@@ -1,0 +1,12 @@
+- name: "Create parent Folder"
+  file:
+    path: "/opt/firemark"
+    state: directory
+
+- name: "Transfer scripts"
+  copy:
+    src: ../../../../listener.py
+    dest: /opt/firemark/server.py
+
+- include: process.yml
+  with_items: "{{ ports }}"

@@ -1,0 +1,7 @@
+- hosts: clients
+  gather_facts: False 
+  become: true 
+  vars:
+    ports: [8000, 8080, 22]
+  roles:
+    - role: 'roles/client'

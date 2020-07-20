@@ -1,0 +1,6 @@
+- include: "client.yml"
+  vars:
+    port: "{{ item }}"
+  with_items: "{{ groups['servers'] }}"
+  loop_control:
+    loop_var: serverip

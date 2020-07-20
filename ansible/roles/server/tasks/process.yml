@@ -1,0 +1,12 @@
+- name: "Is port {{ item }} available"
+  wait_for:
+    port: "{{ item }}"
+    timeout: 10
+    msg: "Timeout waiting for {{ item }} to respond"
+  register: port_check
+  ignore_errors: yes
+
+
+- name: "Start process listening on {{ item }}"
+  shell: "nohup python /opt/firemark/server.py {{ item }} &"
+  when: port_check.failed == true

@@ -1,0 +1,12 @@
+- hosts: servers 
+  gather_facts: False 
+  become: true 
+  tasks:
+    - name: "Stop Processes"
+      shell: "pkill -f 'python /opt/firemark'"
+      ignore_errors: yes
+      
+    - name: "Cleanup Folders"
+      file:
+         path: /opt/firemark
+         state: absent
